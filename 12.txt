@@ -1,0 +1,58 @@
+1) hadoop verion
+
+2) cd hadoop-2.7.3
+
+3) bin/hadoop namenode -format
+
+4) cd sbin/
+
+5) ./hadoop-daemon.sh start namenode
+
+6) ./hadoop-daemon.sh start datanode
+
+7) ./yarn-daemon.sh start resourcemanager
+
+8) ./yarn-daemon.sh start nodemanager
+
+9) ./mr-jobhistory-daemon.sh start historyserver
+
+10) jps
+
+11) cd .. (2 times)
+
+12) sudo mkdir anurag
+
+13) sudo chmod 777 -R anurag/
+
+14) sudo chown -R student anurag/
+
+15) cd anurag
+
+16) ls
+
+17) sudo chmod +r *.*
+
+18) export CLASSPATH="$HADOOP_HOME/share/hadoop/mapreduce/hadoop-mapreduce-client-core-2.7.3.jar:$HADOOP_HOME/share/hadoop/mapreduce/hadoop-mapreduce-client-common-2.7.3.jar:$HADOOP_HOME/share/hadoop/common/hadoop-common-2.7.3.jar:~/Desktop/anurag/SalesCountry/*:$HADOOP_HOME/lib/*"
+
+19) javac -d . SalesMapper.java SalesCountryReducer.java SalesCountryDriver.java
+
+20) gedit Manifest.txt
+    add :- Main-Class: SalesCountry.SalesCountryDriver 
+    enter and ctrl S and close
+
+21) jar -cfm anu.jar Manifest.txt SalesCountry/*.class
+
+22) sudo mkdir /input200
+
+23) sudo cp SalesJan2009.csv /input200
+
+24) $HADOOP_HOME/bin/hdfs dfs -put /input200 /
+
+25) $HADOOP_HOME/bin/hadoop jar anu.jar /input200 /output200
+
+26) hadoop fs -ls /output200
+
+27) hadoop fs -cat /output200/part-00000
+		
+
+
